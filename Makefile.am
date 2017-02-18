@@ -53,6 +53,34 @@ nodist_include_HEADERS = libserialport.h
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libserialport.pc
 
+# Examples
+bin_PROGRAMS = examples/serialport-get-list
+
+examples_serialport_get_list_SOURCES = \
+	examples/get-list.c \
+	$(NULL)	
+
+examples_serialport_get_list_CPPFLAGS = \
+	-I$(top_srcdir) \
+	-I$(top_builddir) \
+	$(AM_CFLAGS) \
+	$(NULL)	
+
+examples_serialport_get_list_CFLAGS = \
+	$(WARN_CFLAGS) \
+	$(NULL)
+
+examples_serialport_get_list_LDADD = \
+	$(top_builddir)/libserialport.la \
+	$(SP_LIBS) \
+	$(NULL)
+
+examples_serialport_get_list_LDFLAGS = \
+	-no-undefined \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
+
 EXTRA_DIST = Doxyfile
 
 MAINTAINERCLEANFILES = ChangeLog

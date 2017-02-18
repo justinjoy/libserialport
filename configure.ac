@@ -41,7 +41,7 @@ AH_BOTTOM([#if HAVE_STRUCT_TERMIOS_C_ISPEED && HAVE_STRUCT_TERMIOS_C_OSPEED
 #endif])
 
 # We require at least automake 1.11 (needed for 'silent rules').
-AM_INIT_AUTOMAKE([1.11 -Wall -Werror no-define check-news])
+AM_INIT_AUTOMAKE([1.11 -Wno-portability no-define check-news subdir-objects])
 AM_SILENT_RULES([yes])
 m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 
@@ -49,6 +49,8 @@ m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
 AC_PROG_CC
 AC_PROG_INSTALL
 AC_PROG_LN_S
+
+AX_COMPILER_FLAGS
 
 # Initialize libtool.
 LT_INIT
